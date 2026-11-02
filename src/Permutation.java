@@ -13,8 +13,23 @@ public class Permutation {
      * @param args command-line arguments; args[0] is the number k of cards to deal
      */
     public static void main(String[] args) {
-        // TODO: Act as the card dealer: read the deck from standard input and deal k random cards.
-        // Hint: use a Scanner to read card names: Scanner scanner = new Scanner(System.in);
-        //       then use scanner.next() to read each card, and System.out.println() to print dealt cards.
+        if (args.length < 1) {
+            return;
+        }
+
+        int k = Integer.parseInt(args[0]);
+        RandomizedQueue<String> queue = new RandomizedQueue<>();
+        Scanner scanner = new Scanner(System.in);
+
+        while (scanner.hasNext()) {
+            String card = scanner.next();
+            queue.enqueue(card);
+        }
+
+        for (int i = 0; i < k; i++) {
+            System.out.println(queue.dequeue());
+        }
+
+        scanner.close();
     }
 }
